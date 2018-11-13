@@ -1,0 +1,13 @@
+
+{
+  "extends": [
+    "plugin:vue/essential"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "rules": {
+    "require-jsdoc": "off",
+    "prefer-destructuring": "off"
+  }
+}
