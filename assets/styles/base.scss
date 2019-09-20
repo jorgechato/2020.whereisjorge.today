@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "futura-bold";
+  src: url("~assets/fonts/futura-bold.ttf") format("truetype");
+  font-style: bold;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "futura";
+  src: url("~assets/fonts/futura-medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+$mainColor: #fff;
+
+body {
+  color: black;
+  font-family: 'Source Sans Pro', 'futura';
+  background: $mainColor;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  transition: .3s color;
+}
+
+a:hover {
+  color: rgba(black, .7);
+  transition: .3s color;
+}
