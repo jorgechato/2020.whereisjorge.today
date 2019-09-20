@@ -1,0 +1,33 @@
+dist: trusty
+language: node_js
+node_js:
+- '8'
+
+env:
+  global:
+    secure: 5+tJXzbTwC6Q8A9XHifJODwOU4NHYsVpWdTzXKz4Ea/16a7hBeB5HUKyvJqy3Ld+3MzLSnIBZbXKYqB1a8ixtyYkzdLbIr0opbJVZcSR3q/3h5Gq1bw/FJsB5dFtjXip5DPvXATPcDCcZrghsoH831q7qt2segCjTIyeC4hWvPihCsKk/GxyzZaeJznLBQd3FXfEHziU3AhS5Krn+EzTlVtRRqi13In8mv0OGI9wGEeHHCA60GvvRDX1O+up8ttwCVWocWO/tsEGoYXdvaG7YYWtpgIplOzrEu0eN98nVHT+6HkBFuiSPazFiSPDYvwPsYjyq2mzPkuItcaOSbQxPYfmBYgcvqJoiD+uiNFgk5HeXBs+Tsj0r7VWsJ3HKp7V0lKFWgIUyaABdnzftAhDHGEwvovAqNCzTOr/0FM2omyDxJn6t5RyvevPugDVI2Twi57moCYVkY8ykyBDq45VQeYarTs2J8Vx5IxnYpzo6BSvRt8kN4xmcZ6IRxzEK05Q59THiI85xeiYwLaeIXmQ9rG211gyRmehxeKgDaRJm8lrFYwlpB/UCvlzp6sSGmGiJhpWUpXIAfrhLwoL7iEfAnB4oH1ZVTgVujAldhwIdwpcn1G5FQAhiKDVVG4uuu54cAVd6GpawFW3BTca9uP05t61rZFCliWYNglEwauOsCM=
+
+cache:
+  directories:
+  - node_modules
+
+branches:
+  only:
+  - master
+
+install:
+- npm install
+- npm run generate
+
+script:
+- echo "Skipping tests"
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GITHUB_ACCESS_TOKEN"
+  target-branch: gh-pages
+  local-dir: dist
+  fqdn: whereisjorge.today
+  on:
+    branch: master
