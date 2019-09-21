@@ -42,7 +42,7 @@ export default {
    */
   modules: [
     ['@nuxtjs/google-analytics', {
-      id: 'UA-XXXXX-X',
+      id: 'UA-146816931-3',
     }],
   ],
   /*
