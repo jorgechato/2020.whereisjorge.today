@@ -1,7 +1,7 @@
 {
   "name": "whereisjorge.today",
   "version": "1.0.0",
-  "description": "whereisjorge.today frontend",
+  "description": "If you want to know where I am, upcoming events I plan to assist, time zone and much more, this is your page.",
   "author": "jorgechato",
   "private": true,
   "scripts": {
