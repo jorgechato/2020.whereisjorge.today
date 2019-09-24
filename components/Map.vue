@@ -4,7 +4,7 @@
       class="map"
       ref="map"
       :zoom="zoom"
-      :center="location.after"
+      :center="[origin.lat, origin.lon]"
       :options="options">
       <l-tile-layer
         :url="baseUrl"
@@ -25,15 +25,19 @@ export default {
     'l-map': LMap,
     'l-tile-layer': LTileLayer
   },
+  props: {
+    location: {
+      type: Object
+    },
+    origin: {
+      type: Object
+    }
+  },
   data() {
     return {
       map: null,
       baseUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
       zoom: 5,
-      location: {
-        now: [41.656837, -0.8794245],
-        after: [44.67, -63.61]
-      },
       bounds: null,
       options: {
         zoomControl: false,
@@ -42,7 +46,7 @@ export default {
       tileOptions: {
         maxZoom: 8,
         minZoom: 3
-      }
+      },
     };
   },
   mounted() {
@@ -54,11 +58,11 @@ export default {
   methods: {
     initMap() {
       this.map.flyTo(
-        this.location.now,
+        [this.location.lat, this.location.lon],
         this.zoom + 2,
         {
           animate: true,
-          duration: 5
+          duration: 10
         }
       )
     }

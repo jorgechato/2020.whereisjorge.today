@@ -38,7 +38,7 @@ export default {
     }
   },
   asyncData(context) {
-    return axios.get('http://localhost:5000/v1/location')
+    return axios.get('https://api.jorgechato.com/v1/location')
       .then(res => {
         let checkIn = moment.unix(res.data.next_locations[0].check_in)
 
