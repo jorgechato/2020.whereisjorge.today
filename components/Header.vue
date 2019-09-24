@@ -21,7 +21,6 @@ $nav-height: 60px;
 
 header {
   color: white;
-  width: 100%;
   height: $nav-height;
   position: sticky;
   z-index: 1;
