@@ -52,6 +52,7 @@ export default {
           city: res.data.city,
           next_locations: res.data.next_locations,
           location: res.data.location,
+          origin: res.data.origin,
           daysUntilTrip: daysUntilTrip
         }
       })
