@@ -7,6 +7,9 @@
         <p v-if="next_locations">
           Leaving for {{ next_locations[0].country }} {{ daysUntilTrip }}
         </p>
+        <p v-else>
+          Leaving {{ daysUntilTrip }}
+        </p>
       </div>
     </div>
     <my-map
@@ -40,12 +43,14 @@ export default {
   asyncData(context) {
     return axios.get('https://api.jorgechato.com/v1/location')
       .then(res => {
-        let daysUntilTrip
+        let time
 
         if (res.data.next_locations) {
-          let checkIn = moment.unix(res.data.next_locations[0].check_in)
-          daysUntilTrip = moment(checkIn).fromNow()
+          time = moment.unix(res.data.next_locations[0].check_in)
+        } else {
+          time = moment.unix(res.data.location.check_out)
         }
+        let daysUntilTrip = moment(time).fromNow()
 
         return {
           name: res.data.name,
