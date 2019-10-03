@@ -4,7 +4,7 @@
       <div class="content">
         <h1>{{ name }} is currently</h1>
         <h2>in {{ location.city }}</h2>
-        <p>
+        <p v-if="next_locations">
           Leaving for {{ next_locations[0].country }} {{ daysUntilTrip }}
         </p>
       </div>
@@ -40,15 +40,19 @@ export default {
   asyncData(context) {
     return axios.get('https://api.jorgechato.com/v1/location')
       .then(res => {
-        let checkIn = moment.unix(res.data.next_locations[0].check_in)
+        let daysUntilTrip
+
+        if (res.data.next_locations) {
+          let checkIn = moment.unix(res.data.next_locations[0].check_in)
+          daysUntilTrip = moment(checkIn).fromNow()
+        }
 
         return {
           name: res.data.name,
           city: res.data.city,
           next_locations: res.data.next_locations,
           location: res.data.location,
-          daysUntilTrip: moment(checkIn).fromNow()
-
+          daysUntilTrip: daysUntilTrip
         }
       })
       .catch(e => context.error(e));
