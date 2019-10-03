@@ -82,7 +82,7 @@ export default {
 
 .container {
   font-family: "futura";
-  height: 100vh;
+  height: calc(100vh + 1px);
   width: 100%;
   background: black;
   position: absolute;
