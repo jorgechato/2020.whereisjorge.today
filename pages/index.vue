@@ -7,7 +7,7 @@
         <p v-if="next_locations">
           Leaving for {{ next_locations[0].country }} {{ daysUntilTrip }}
         </p>
-        <p v-else>
+        <p v-if="location.check_out">
           Leaving {{ daysUntilTrip }}
         </p>
       </div>
@@ -31,13 +31,6 @@ export default {
   },
   data() {
     return {
-      origin: {
-        city: "Amsterdam",
-        country: "Netherlands",
-        lat: 52.1326,
-        lon: 5.2913,
-        timezone_id: ""
-      }
     }
   },
   asyncData(context) {
