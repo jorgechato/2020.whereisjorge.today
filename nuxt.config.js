@@ -1,9 +1,5 @@
 export default {
   mode: 'spa',
-  server: {
-    port: 3000, // default: 3000
-    host: '0.0.0.0' // default: localhost
-  },
   /*
    ** Headers of the page
    */
@@ -94,6 +90,6 @@ export default {
    ** Axios module configuration
    */
   axios: {
-    baseURL: process.env.BASE_URL || 'http://localhost:5000/v2'
+    baseURL: process.env.BASE_URL || 'https://api.jorgechato.com/v2'
   }
 }
