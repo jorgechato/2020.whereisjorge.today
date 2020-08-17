@@ -1,19 +1,24 @@
 <template>
   <div>
-    <Header />
-      <nuxt />
+    <Nav />
+
+    <nuxt />
+
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from '~/components/Header.vue'
+import Nav from '~/components/Header/Nav'
+import Footer from '~/components/Footer'
 
 export default {
   components: {
-    Header
+    Nav,
+    Footer,
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 </style>
