@@ -1,6 +1,6 @@
 {
   "name": "whereisjorge.today",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "If you want to know where I am, upcoming events I plan to assist, time zone and much more, this is your page.",
   "author": "jorgechato",
   "private": true,
@@ -12,17 +12,20 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@nuxtjs/axios": "^5.12.1",
     "@nuxtjs/google-analytics": "^2.2.0",
-    "axios": "^0.19.0",
-    "leaflet": "^1.5.1",
-    "moment": "^2.24.0",
+    "marked": "^1.1.1",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.0.0",
-    "vue2-leaflet": "^2.2.1"
+    "nuxt": "^2.14.3",
+    "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.14.1",
     "push-dir": "^0.4.1",
-    "sass-loader": "^8.0.0"
+    "sass-loader": "^9.0.3"
   }
 }

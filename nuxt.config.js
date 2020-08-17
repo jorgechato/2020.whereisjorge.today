@@ -1,6 +1,9 @@
-
 export default {
   mode: 'spa',
+  server: {
+    port: 3000, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
   /*
    ** Headers of the page
    */
@@ -19,7 +22,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#000' },
+  loading: { color: '#E0115F' },
   /*
    ** Global CSS
    */
@@ -31,6 +34,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
+    "~plugins/strings.js",
   ],
   /*
    ** Nuxt.js dev-modules
@@ -41,9 +45,40 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
+    '@nuxtjs/axios',
     ['@nuxtjs/google-analytics', {
       id: 'UA-146816931-3',
     }],
+    ['nuxt-fontawesome', {
+        component: 'fa',
+        imports: [
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            icons: [
+              'faHeart',
+              'faCheck',
+              'faGhost',
+              'faCameraRetro',
+            ]
+          },
+          {
+            set: '@fortawesome/free-regular-svg-icons',
+            icons: [
+              'faCheckSquare',
+              'faSquare',
+            ]
+          },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: [
+              'faYoutube',
+              'faSpotify',
+              'faItunes',
+              'faInstagram',
+            ]
+          }
+        ]
+      }],
   ],
   /*
    ** Build configuration
@@ -54,5 +89,11 @@ export default {
      */
     extend (config, ctx) {
     }
+  },
+  /*
+   ** Axios module configuration
+   */
+  axios: {
+    baseURL: process.env.BASE_URL || 'http://localhost:5000/v2'
   }
 }
