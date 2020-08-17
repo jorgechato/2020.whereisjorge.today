@@ -1,81 +1,95 @@
 <template>
-  <div class="container">
-    <div class="title">
-      <div class="content">
-        <h1>{{ name }} is currently</h1>
-        <h2>in {{ location.city }}</h2>
-        <p v-if="next_locations">
-          Leaving for {{ next_locations[0].country }} {{ daysUntilTrip }}
-        </p>
-        <p v-if="location.check_out">
-          Leaving {{ daysUntilTrip }}
-        </p>
+  <div>
+
+    <my-logo
+      :thumbnail="location.current.thumbnail"
+      :country="location.current.country"/>
+
+      <div id="location-txt">
+
+        <h3>is currently in</h3>
+        <h2>
+          <a
+            target="_blank"
+            :href="'//www.google.com/maps/@'+location.current.lat+','+location.current.lon+',15z'">
+            {{ location.current.city }}
+          </a>
+        </h2>
+
+        <br>
+
+        <h4 v-if="location.next.length">Next trips</h4>
+        <div id="next-location" v-for="value in location.next">
+          <div v-for="cities in value.steps">
+            <span id="country">{{ cities.metadata.country }}</span> {{ cities.metadata.city }}
+          </div>
+        </div>
+        <!-- <div class="wrapper" v-html="cover"></div> -->
       </div>
-    </div>
-    <my-map
-      :origin="origin"
-      :location="location"/>
   </div>
 </template>
 
 <script>
-import Map from '~/components/Map.vue'
-import axios from 'axios'
-import moment from 'moment'
+import Logo from '~/components/Header/Logo'
+import marked from 'marked'
 
 
 export default {
-  layout: 'main',
   components: {
-    'my-map': Map
+    'my-logo': Logo,
   },
   data() {
     return {
     }
   },
-  asyncData(context) {
-    return axios.get('https://api.jorgechato.com/v1/location')
-      .then(res => {
-        let time
+  async asyncData({ $axios }) {
+    const currentLocation = await $axios.get('/location/current');
+    const nextLocation = await $axios.get('/location/next');
 
-        if (res.data.next_locations) {
-          time = moment.unix(res.data.next_locations[0].check_in)
-        } else {
-          time = moment.unix(res.data.location.check_out)
-        }
-        let daysUntilTrip = moment(time).fromNow()
+    const cover = await $axios.get("https://raw.githubusercontent.com/jorgechato/jorgechato/master/README.md");
 
-        return {
-          name: res.data.name,
-          city: res.data.city,
-          next_locations: res.data.next_locations,
-          location: res.data.location,
-          origin: res.data.origin,
-          daysUntilTrip: daysUntilTrip
-        }
-      })
-      .catch(e => context.error(e));
+    return {
+      location: {
+        current: currentLocation.data,
+        next: nextLocation.data,
+      },
+      cover: marked(cover.data),
+    }
   }
 }
 </script>
 
 <style lang="scss" scope>
-.title {
-  position: absolute;
-  color: white;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  text-align: center;
-  background: rgba(0, 0, 0, .8);
+#next-location {
+  font-family: inherit;
+  text-align: left;
+  display: inline-block;
 
-  .content {
-    margin-top: 30vh;
-    font-size: 2em;
+  .stop-bar, .start-point, .end-point {
+    background-color:rgb(50,50,50)!important;
+  }
+
+  #country {
+    color: rgba(white,.4);
+  }
+}
+
+#location-txt {
+  text-align: center;
+
+  h3, h4 {
+    color: rgba(white,.7);
+  }
+
+  h2 {
+    a {
+      transition: all .1s ease-in-out;
+
+      &:hover {
+        color: white;
+        font-size: 1.05em;
+      }
+    }
   }
 }
 </style>
