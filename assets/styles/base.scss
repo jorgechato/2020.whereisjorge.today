@@ -12,22 +12,21 @@
   font-weight: normal;
 }
 
-$mainColor: #fff;
+$mainColor: #111;
 
 body {
-  color: black;
-  font-family: 'Source Sans Pro', 'futura';
+  color: white;
+  font-family: "futura";
   background: $mainColor;
-  font-size: 16px;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
   transition: .3s color;
 }
 
 a:hover {
-  color: rgba(black, .7);
+  color: rgba(white, .7);
   transition: .3s color;
 }
