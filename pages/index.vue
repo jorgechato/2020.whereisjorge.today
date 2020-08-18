@@ -24,14 +24,12 @@
             <span id="country">{{ cities.metadata.country }}</span> {{ cities.metadata.city }}
           </div>
         </div>
-        <!-- <div class="wrapper" v-html="cover"></div> -->
       </div>
   </div>
 </template>
 
 <script>
 import Logo from '~/components/Header/Logo'
-import marked from 'marked'
 
 
 export default {
@@ -46,14 +44,11 @@ export default {
     const currentLocation = await $axios.get('/location/current');
     const nextLocation = await $axios.get('/location/next');
 
-    const cover = await $axios.get("https://raw.githubusercontent.com/jorgechato/jorgechato/master/README.md");
-
     return {
       location: {
         current: currentLocation.data,
         next: nextLocation.data,
       },
-      cover: marked(cover.data),
     }
   }
 }
