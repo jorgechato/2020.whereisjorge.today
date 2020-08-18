@@ -11,7 +11,7 @@
         <h2>
           <a
             target="_blank"
-            :href="'//www.google.com/maps/@'+location.current.lat+','+location.current.lon+',15z'">
+            :href="'//www.google.com/maps/@'+location.current.lat+','+location.current.lon+',13z'">
             {{ location.current.city }}
           </a>
         </h2>
