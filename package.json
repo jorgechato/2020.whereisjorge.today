@@ -1,11 +1,11 @@
 {
   "name": "whereisjorge.today",
-  "version": "1.1.0",
+  "version": "2.0.1",
   "description": "If you want to know where I am, upcoming events I plan to assist, time zone and much more, this is your page.",
   "author": "jorgechato",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt --hostname 0.0.0.0 --port 3000",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
