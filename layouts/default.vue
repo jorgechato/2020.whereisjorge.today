@@ -1,7 +1,5 @@
 <template>
   <div>
-    <Nav />
-
     <nuxt />
 
     <Footer />
@@ -9,12 +7,10 @@
 </template>
 
 <script>
-import Nav from '~/components/Header/Nav'
 import Footer from '~/components/Footer'
 
 export default {
   components: {
-    Nav,
     Footer,
   }
 }

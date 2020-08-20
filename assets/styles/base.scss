@@ -13,11 +13,13 @@
 }
 
 $mainColor: #111;
+$headerColor: rgba(white,.7);
 
 body {
   color: white;
   font-family: "futura";
   background: $mainColor;
+  text-align: center;
 }
 
 a {
@@ -29,4 +31,8 @@ a {
 a:hover {
   color: rgba(white, .7);
   transition: .3s color;
+}
+
+h3, h4 {
+  color: $headerColor;
 }
