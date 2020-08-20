@@ -1,18 +1,17 @@
 <template>
-  <nav id="nav" class="navbar is-transparent is-fixed-top"
-        ref="nav">
+  <nav
+    id="nav"
+    class="navbar is-transparent is-fixed-top"
+    ref="nav">
 
-    <MicroLogo />
+    <MicroLogo
+      :thumbnail="thumbnail"/>
 
-    <nuxt-link class="menu" :to="'/mochila'">Mochila</nuxt-link>
-    <a class="menu"
-      href="//www.youtube.com/channel/UCvYE-kjfF_fkg6akr5DNvdw?view_as=subscriber">
-       Youtube
+    <span v-for="link in links" :key="link.name">
+    <a class="menu" v-bind:href="link.url">
+      {{ link.name }}
     </a>
-    <a class="menu"
-      href="//www.instagram.com/jorgechato">
-       Instagram
-    </a>
+    </span>
 
   </nav>
 </template>
@@ -24,6 +23,30 @@ export default {
   name: 'Nav',
   components: {
     MicroLogo,
+  },
+  props: {
+    thumbnail: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      links: [
+        {
+          name: "Articles",
+          url: "//jorgechato.com"
+        },
+        {
+          name: "Twitch",
+          url: "//www.twitch.tv/dondeestajorge"
+        },
+        {
+          name: "Shop",
+          url: "//gumroad.com/l/twitch-lightroom-presets-donde-esta-jorge"
+        },
+      ],
+    }
   },
   mounted() {
     this.$nextTick(() => {

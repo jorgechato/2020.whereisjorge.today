@@ -30,7 +30,7 @@ export default {
   props: {
     thumbnail: {
       type: String,
-      //required: true,
+      required: true,
     },
   },
   components: {
