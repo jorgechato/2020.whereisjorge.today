@@ -1,81 +1,69 @@
 <template>
   <div>
 
-    <my-logo
-      :thumbnail="location.current.thumbnail"
-      :country="location.current.country"/>
+    <nav-bar
+      :thumbnail="location.current.thumbnail"/>
 
-      <div id="location-txt">
+      <my-logo
+        :thumbnail="location.current.thumbnail"
+        :country="location.current.country"/>
 
-        <h3>is currently in</h3>
-        <h2>
-          <a
-            target="_blank"
-            :href="'//www.google.com/maps/@'+location.current.lat+','+location.current.lon+',13z'">
-            {{ location.current.city }}
-          </a>
-        </h2>
+        <div class="location-txt">
 
-        <br>
-
-        <h4 v-if="location.next.length">Next trips</h4>
-        <div id="next-location" v-for="value in location.next">
-          <div v-for="cities in value.steps">
-            <span id="country">{{ cities.metadata.country }}</span> {{ cities.metadata.city }}
-          </div>
+          <h3>is currently in</h3>
+          <h2>
+            <a
+              target="_blank"
+              :href="'//www.google.com/maps/@'+location.current.lat+','+location.current.lon+',13z'">
+              {{ location.current.city }}
+            </a>
+          </h2>
         </div>
-      </div>
+
+        <next-locations
+          :locations="location.next"/>
+
+          <book-list
+            :books="books"/>
   </div>
 </template>
 
 <script>
+import Nav from '~/components/Header/Nav'
 import Logo from '~/components/Header/Logo'
+import Next from '~/components/Location/Next'
+import BookList from '~/components/Books/List'
 
 
 export default {
   components: {
+    'nav-bar': Nav,
     'my-logo': Logo,
-  },
-  data() {
-    return {
-    }
+    'next-locations': Next,
+    'book-list': BookList,
   },
   async asyncData({ $axios }) {
     const currentLocation = await $axios.get('/location/current');
-    const nextLocation = await $axios.get('/location/next');
+    const nextLocation = await $axios.get('/location/next')
+      .catch(err => { return [] });
+    const books = await $axios.get('/books', {
+      params: { score: 5 }
+    })
+      .catch(err => { return [] });
 
     return {
       location: {
         current: currentLocation.data,
         next: nextLocation.data,
       },
+      books: books.data,
     }
   }
 }
 </script>
 
 <style lang="scss" scope>
-#next-location {
-  font-family: inherit;
-  text-align: left;
-  display: inline-block;
-
-  .stop-bar, .start-point, .end-point {
-    background-color:rgb(50,50,50)!important;
-  }
-
-  #country {
-    color: rgba(white,.4);
-  }
-}
-
-#location-txt {
-  text-align: center;
-
-  h3, h4 {
-    color: rgba(white,.7);
-  }
-
+.location-txt {
   h2 {
     a {
       transition: all .1s ease-in-out;
