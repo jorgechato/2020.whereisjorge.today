@@ -49,7 +49,7 @@ $color: rgba(white, .3);
   }
 
   .limit{
-    font-size: 4em;
+    font-size: 3em;
     color: $color;
   }
 }
@@ -60,7 +60,7 @@ $color: rgba(white, .3);
 }
 
 .social {
-  padding-top: 1em;
+  padding-top: .5em;
 }
 
 </style>

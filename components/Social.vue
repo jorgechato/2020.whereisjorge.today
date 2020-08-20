@@ -1,8 +1,8 @@
 <template>
   <div class="social">
 
-    <a href="//jorgechato.com"><fa :icon="['fas', 'ghost']" /></a>
-    <a href="//gumroad.com/l/twitch-lightroom-presets-donde-esta-jorge"><fa :icon="['fas', 'camera-retro']" /></a>
+    <a href="//jorgechato.com"><fa :icon="['fas', 'stream']" /></a>
+    <a href="//gumroad.com/l/twitch-lightroom-presets-donde-esta-jorge"><fa :icon="['fas', 'shopping-cart']" /></a>
     <a href="//open.spotify.com/show/6HPGljWQbxmnxqhWNNMUpX"><fa :icon="['fab', 'spotify']" /></a>
     <a href="//www.instagram.com/whereisjorge.today"><fa :icon="['fab', 'instagram']" /></a>
 
@@ -18,14 +18,14 @@ export default {
 <style lang="scss" scoped>
 $youtube: #ff0000;
 $spotify: #1db954;
-$ghost: white;
+$stream: white;
 $instagram: #c13584;
-$camera: #00CED1;
+$shopping-cart: #034EA2;
 $color: rgba(white, .3);
 
 
 .svg-inline--fa{
-  font-size: 2.5em;
+  font-size: 2em;
   padding: 0 .2em;
   text-decoration: none;
   color: $color;
@@ -35,16 +35,16 @@ $color: rgba(white, .3);
   color: $youtube;
 }
 
-.fa-camera-retro:hover{
-  color: $camera;
+.fa-shopping-cart:hover{
+  color: $shopping-cart;
 }
 
 .fa-spotify:hover{
   color: $spotify;
 }
 
-.fa-ghost:hover{
-  color: $ghost;
+.fa-stream:hover{
+  color: $stream;
 }
 
 .fa-instagram:hover{
