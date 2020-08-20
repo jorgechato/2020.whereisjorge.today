@@ -18,7 +18,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#E0115F' },
+  loading: { color: '#7D1128' },
   /*
    ** Global CSS
    */
@@ -53,8 +53,8 @@ export default {
             icons: [
               'faHeart',
               'faCheck',
-              'faGhost',
-              'faCameraRetro',
+              'faStream',
+              'faShoppingCart',
             ]
           },
           {
