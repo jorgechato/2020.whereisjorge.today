@@ -65,18 +65,17 @@ $authorColor: rgba(white,.6);
 .tile__img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .tile {
-  float: left;
+  display: inline-block;
   position: relative;
   width: $width;
   height: $height;
   transition: transform $transition;
   text-decoration: none;
   color: white;
-  margin: .7em 3px;
+  margin: 13px 3px;
 }
 
 .books:hover {
