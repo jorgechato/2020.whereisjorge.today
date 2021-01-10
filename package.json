@@ -12,15 +12,15 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "@fortawesome/free-brands-svg-icons": "^5.14.0",
-    "@fortawesome/free-regular-svg-icons": "^5.14.0",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@nuxtjs/axios": "^5.12.1",
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/google-analytics": "^2.2.0",
-    "marked": "^1.1.1",
+    "marked": "^1.2.7",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.14.3",
+    "nuxt": "^2.14.12",
     "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
